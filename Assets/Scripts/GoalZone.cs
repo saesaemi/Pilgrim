@@ -6,7 +6,7 @@ public class GoalZone : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            GameManager.Instance.LoadNextLevel();
+            GameManager.Instance.LoadNextStage();
         }
     }
 }
