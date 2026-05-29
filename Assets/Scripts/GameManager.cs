@@ -4,26 +4,29 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
 
-    [SerializeField] private PlayerController player;
-    [SerializeField] private Transform defaultRespawnPoint;
-    [SerializeField] private float respawnDelay = 1f;
+    public PlayerController player;
+    public Transform defaultRespawnPoint;
+    public float respawnDelay = 1f;
 
     private Vector3 currentCheckpoint;
     private int deathCount;
 
     public int DeathCount => deathCount;
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        _instance = this;
+        DontDestroyOnLoad(this);
         currentCheckpoint = defaultRespawnPoint != null ? defaultRespawnPoint.position : Vector3.zero;
+        UIManager.Instance?.Get(UIManager.UIType.INTRO);
     }
 
     public void UpdateCheckpoint(Vector3 position)
