@@ -2,7 +2,7 @@ using UnityEngine;
 
 // DAY 4 좁은 문 — 날아오는 투사체
 [RequireComponent(typeof(Rigidbody2D))]
-public class Projectile : MonoBehaviour
+public class Projectile : TrapBase
 {
     [SerializeField] private float speed = 6f;
     [SerializeField] private Vector2 direction = Vector2.left;
@@ -14,12 +14,9 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnPlayerTriggerEnter(PlayerController player)
     {
-        if (other.TryGetComponent<PlayerController>(out var player))
-        {
-            player.Die();
-            Destroy(gameObject);
-        }
+        player.Die();
+        Destroy(gameObject);
     }
 }

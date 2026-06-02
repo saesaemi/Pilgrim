@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // 두 지점 사이를 왕복하는 발판
-public class MovingPlatform : MonoBehaviour
+public class MovingPlatform : TrapBase
 {
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
@@ -19,24 +19,13 @@ public class MovingPlatform : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target.position) < 0.01f)
-        {
             target = target == pointA ? pointB : pointA;
-        }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.GetComponent<PlayerController>() != null)
-        {
-            other.transform.SetParent(transform);
-        }
-    }
+    // 플레이어가 올라서면 자식으로 붙여서 함께 이동
+    protected override void OnPlayerCollisionEnter(PlayerController player)
+        => player.transform.SetParent(transform);
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.GetComponent<PlayerController>() != null)
-        {
-            other.transform.SetParent(null);
-        }
-    }
+    protected override void OnPlayerCollisionExit(PlayerController player)
+        => player.transform.SetParent(null);
 }

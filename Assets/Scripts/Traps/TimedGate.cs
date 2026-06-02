@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 // 일정 간격으로 열렸다 닫히는 게이트 — 타이밍 맞춰야 통과 가능
-public class TimedGate : MonoBehaviour
+public class TimedGate : TrapBase
 {
-    [SerializeField] private float openDuration = 1f;
+    [SerializeField] private float openDuration  = 1f;
     [SerializeField] private float closeDuration = 1.5f;
     [SerializeField] private float firstOpenDelay = 0f;
 
@@ -25,7 +25,6 @@ public class TimedGate : MonoBehaviour
     private IEnumerator GateCycleRoutine()
     {
         yield return new WaitForSeconds(firstOpenDelay);
-
         while (true)
         {
             SetOpen(true);
@@ -37,13 +36,11 @@ public class TimedGate : MonoBehaviour
 
     private void SetOpen(bool open)
     {
-        col.enabled = !open;                                  // 열리면 콜라이더 OFF
-        if (sr != null) sr.color = open ? new Color(1,1,1,0.3f) : Color.white;
+        col.enabled = !open;
+        if (sr != null) sr.color = open ? new Color(1, 1, 1, 0.3f) : Color.white;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.TryGetComponent<PlayerController>(out var player))
-            player.Die();
-    }
+    // 닫혀 있을 때 충돌하면 즉사
+    protected override void OnPlayerCollisionEnter(PlayerController player)
+        => player.Die();
 }

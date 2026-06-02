@@ -2,24 +2,21 @@ using System.Collections;
 using UnityEngine;
 
 // 바닥에서 솟아오르는 가시 — 일정 간격으로 올라왔다 내려감
-public class PopUpSpike : MonoBehaviour
+public class PopUpSpike : TrapBase
 {
-    [SerializeField] private float upDuration = 1f;    // 올라와 있는 시간
-    [SerializeField] private float downDuration = 1.5f; // 내려가 있는 시간
-    [SerializeField] private float moveDistance = 1f;   // 이동 거리
+    [SerializeField] private float upDuration = 1f;
+    [SerializeField] private float downDuration = 1.5f;
+    [SerializeField] private float moveDistance = 1f;
     [SerializeField] private float moveSpeed = 8f;
 
     private Vector3 downPos;
     private Vector3 upPos;
-    private bool isUp;
-    private Collider2D col;
 
     private void Start()
     {
-        col = GetComponent<Collider2D>();
         downPos = transform.position;
-        upPos = downPos + Vector3.up * moveDistance;
-        col.enabled = false;
+        upPos   = downPos + Vector3.up * moveDistance;
+        Deactivate(); // 처음엔 비활성
         StartCoroutine(CycleRoutine());
     }
 
@@ -29,9 +26,9 @@ public class PopUpSpike : MonoBehaviour
         {
             yield return new WaitForSeconds(downDuration);
             yield return MoveToRoutine(upPos);
-            col.enabled = true;
+            Activate();                          // TrapBase: 트리거 활성
             yield return new WaitForSeconds(upDuration);
-            col.enabled = false;
+            Deactivate();                        // TrapBase: 트리거 비활성
             yield return MoveToRoutine(downPos);
         }
     }
@@ -46,9 +43,5 @@ public class PopUpSpike : MonoBehaviour
         transform.position = target;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.TryGetComponent<PlayerController>(out var player))
-            player.Die();
-    }
+    // TrapBase 기본 동작(즉사) 그대로 사용
 }

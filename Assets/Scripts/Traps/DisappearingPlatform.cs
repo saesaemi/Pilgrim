@@ -2,9 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 // 플레이어가 올라서면 잠시 후 사라졌다가 복원
-public class DisappearingPlatform : MonoBehaviour
+public class DisappearingPlatform : TrapBase
 {
-    [SerializeField] private float disappearDelay = 0.5f;
     [SerializeField] private float respawnDelay = 2f;
 
     private Collider2D col;
@@ -14,21 +13,18 @@ public class DisappearingPlatform : MonoBehaviour
     private void Awake()
     {
         col = GetComponent<Collider2D>();
-        sr = GetComponent<SpriteRenderer>();
+        sr  = GetComponent<SpriteRenderer>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    protected override void OnPlayerCollisionEnter(PlayerController player)
     {
         if (isTriggered) return;
-        if (other.gameObject.GetComponent<PlayerController>() == null) return;
-
         isTriggered = true;
         StartCoroutine(DisappearRoutine());
     }
 
     private IEnumerator DisappearRoutine()
     {
-        // 깜빡임으로 경고
         for (int i = 0; i < 3; i++)
         {
             sr.color = new Color(1, 1, 1, 0.3f);
@@ -38,13 +34,13 @@ public class DisappearingPlatform : MonoBehaviour
         }
 
         col.enabled = false;
-        sr.enabled = false;
+        sr.enabled  = false;
 
         yield return new WaitForSeconds(respawnDelay);
 
         col.enabled = true;
-        sr.enabled = true;
-        sr.color = Color.white;
+        sr.enabled  = true;
+        sr.color    = Color.white;
         isTriggered = false;
     }
 }
