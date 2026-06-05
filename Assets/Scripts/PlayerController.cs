@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckRadius = 0.1f;
+    public Animator animator;
 
     // 상태이상
     private float speedMultiplier = 1f;     // 슬로우 등 속도 배율
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isDead;
 
     public bool IsDead => isDead;
+    private bool isStageEnd = false;
 
     private void Awake()
     {
@@ -31,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isDead) return;
+        if (isDead || isStageEnd) return;
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
@@ -44,6 +47,13 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, targetVelX, Time.deltaTime * 3f), rb.linearVelocity.y);
         else
             rb.linearVelocity = new Vector2(targetVelX, rb.linearVelocity.y);
+                
+        if (targetVelX != 0 && rb.linearVelocity.y == 0)
+        {
+            animator.SetBool("Run_End", false);
+        }
+        else
+            animator.SetBool("Run_End", true);
 
         bool jumpInput = isControlsReversed ? Input.GetButtonDown("Fire1") : Input.GetButtonDown("Jump");
         if (jumpInput && isGrounded)
@@ -80,6 +90,7 @@ public class PlayerController : MonoBehaviour
         isSlippery = false;
         rb.linearVelocity = Vector2.zero;
         GameManager.Instance.OnPlayerDied();
+        animator.SetTrigger("Die");
     }
 
     public void Respawn(Vector3 position)
@@ -90,8 +101,15 @@ public class PlayerController : MonoBehaviour
         isControlsReversed = false;
         isSlippery = false;
         isDead = false;
+        isStageEnd = false;
+        animator.SetTrigger("Idle");
     }
-
+    public void Victory(Vector3 position)
+    {
+        transform.position = position;
+        isStageEnd = true;
+        animator.SetTrigger("Victory");
+    }
     private void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;

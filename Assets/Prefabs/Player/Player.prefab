@@ -256,3 +256,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckRadius: 0.1
+  animator: {fileID: 1334575748640751576}
