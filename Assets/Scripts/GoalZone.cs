@@ -6,7 +6,9 @@ public class GoalZone : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            GameManager.Instance.OnClearStage(transform.position);
+            var animator = GetComponent<Animator>();
+            animator.SetBool("Clear", true);
+            GameManager.Instance.OnClearStage(0.3f);
         }
     }
 }

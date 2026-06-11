@@ -6,10 +6,12 @@ using UnityEngine;
 public class StageData : ScriptableObject
 {
     [Header("스테이지 정보")]
-    public int dayNumber;
-    public string stageTitle;
-    public bool isBuffStage;
+    public int DayNumber;
+    public string StageTitle;
+    public bool IsBuffStage;
+    public bool IsGuide;
+    public string StageDesc;
 
     [Header("프리팹")]
-    public GameObject stagePrefab;  // 해당 DAY의 스테이지 프리팹
+    public GameObject StagePrefab;  // 해당 DAY의 스테이지 프리팹
 }

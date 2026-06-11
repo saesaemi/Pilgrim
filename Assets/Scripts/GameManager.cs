@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public PlayerController Player;
     public Transform DefaultRespawnPoint;
     public float RespawnDelay = 1.5f;
-    public float VictoryDelay = 1f;
+    public float VictoryDelay = 0.5f;
 
     private Vector3 currentCheckpoint;
     private int deathCount;
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
+    public bool IsPause = false;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -27,12 +28,15 @@ public class GameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this);
         currentCheckpoint = DefaultRespawnPoint != null ? DefaultRespawnPoint.position : Vector3.zero;
+        Player.gameObject.SetActive(false);
         UIManager.Instance?.Get(UIManager.UIType.INTRO);
     }
     public void UpdateCheckpoint(Vector3 position)
     {
         currentCheckpoint = position;
+        Player.gameObject.SetActive(true);
         Player.Respawn(currentCheckpoint);
+        IsPause = false;
         Debug.Log($"체크포인트 갱신: {position}");
     }
 
@@ -48,14 +52,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(RespawnDelay);
         Player.Respawn(currentCheckpoint);
     }
-    public void OnClearStage(Vector3 positioin)
+    public void OnClearStage(float time)
     {
-        StartCoroutine(VictoryRoutine(positioin));
+        IsPause = true;
+        Player.gameObject.SetActive(false);
+        StartCoroutine(VictoryRoutine(time));
     }
-    private IEnumerator VictoryRoutine(Vector3 positioin)
+    private IEnumerator VictoryRoutine(float time)
     {
-        Player.Victory(positioin);
-        yield return new WaitForSeconds(VictoryDelay);
+        Player.Victory();
+        yield return new WaitForSeconds(time);
         LoadNextStage();
     }
 

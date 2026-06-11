@@ -16,7 +16,8 @@ public class StageLoader : MonoBehaviour
 
     // 현재 스테이지 데이터 외부 접근용
     public StageData CurrentData => database.Get(currentIndex);
-    public int CurrentIndex      => currentIndex;
+    public int CurrentIndex => currentIndex;
+    public int StageCount => database.TotalStages;
 
     private void Awake()
     {
@@ -24,12 +25,10 @@ public class StageLoader : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        LoadStage(0);
-    }
-
-    // ── 스테이지 로드 ─────────────────────────────
+    //private void Start()
+    //{
+    //    LoadStage(0);
+    //}
 
     public void LoadStage(int index)
     {
@@ -64,23 +63,27 @@ public class StageLoader : MonoBehaviour
         currentIndex = index;
         StageData data = database.Get(index);
 
-        if (data == null || data.stagePrefab == null)
+        if (data == null || data.StagePrefab == null)
         {
             Debug.LogError($"DAY {index + 1} 프리팹 없음");
             yield break;
         }
 
         // 새 스테이지 생성
-        currentStageInstance = Instantiate(data.stagePrefab, stageRoot);
+        currentStageInstance = Instantiate(data.StagePrefab, stageRoot);
 
         // GameManager에 시작 위치 알림
         var spawnPoint = currentStageInstance.GetComponentInChildren<SpawnPoint>();
         if (spawnPoint != null)
             GameManager.Instance.UpdateCheckpoint(spawnPoint.transform.position);
+        if (data.IsGuide)
+            UIManager.Instance.SetGuide();
+        else
+            UIManager.Instance.RemoveGuide();
 
         yield return FadeIn();
 
-        Debug.Log($"DAY {data.dayNumber} 로드 완료: {data.stageTitle}");
+        Debug.Log($"DAY {data.DayNumber} 로드 완료: {data.StageTitle}");
     }
 
     // ── 페이드 연출 ──────────────────────────────
@@ -98,7 +101,7 @@ public class StageLoader : MonoBehaviour
         // 타이틀 표시
         var data = database.Get(currentIndex);
         if (data != null)
-            StageTitleUI.Instance?.Show(data.dayNumber, data.stageTitle, data.isBuffStage);
+            StageTitleUI.Instance?.Show(data.DayNumber, data.StageTitle, data.IsBuffStage);
 
         if (FadeController.Instance != null)
             yield return FadeController.Instance.FadeIn(transitionDuration);

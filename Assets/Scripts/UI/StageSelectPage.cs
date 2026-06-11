@@ -3,24 +3,25 @@ using UnityEngine;
 
 public class StageSelectPage : MonoBehaviour
 {
-    public int StageCount = 40;
     public GameObject Prefab;
 
     private List<List_Stage> list = new List<List_Stage>();
     private void Awake()
     {
         Prefab.SetActive(false);
-        for (int i = 0; i < StageCount; i++) 
+        var stageCount = StageLoader.Instance.StageCount;
+        for (int i = 0; i < stageCount; i++) 
         { 
             var go = Instantiate(Prefab, Prefab.transform.parent);
             go.SetActive(true);
             var stage = go.GetComponent<List_Stage>();
-            stage.Setup(i);
+            stage.Setup(i, OnClickStage);
             list.Add(stage);
         }
     }
-    public void OnClickStage()
+    public void OnClickStage(int index)
     {
         UIManager.Instance.Get(UIManager.UIType.GAME);
+        StageLoader.Instance.LoadStage(index);
     }
 }

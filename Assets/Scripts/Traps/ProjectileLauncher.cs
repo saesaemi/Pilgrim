@@ -16,7 +16,8 @@ public class ProjectileLauncher : MonoBehaviour
     private void Launch()
     {
         if (projectilePrefab == null) return;
-        var go = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        if (GameManager.Instance.IsPause) return;
+            var go = Instantiate(projectilePrefab, transform/*, Quaternion.identity*/);
         if (go.TryGetComponent<Projectile>(out _))
         {
             // direction은 Projectile의 Inspector에서 설정하거나 여기서 주입

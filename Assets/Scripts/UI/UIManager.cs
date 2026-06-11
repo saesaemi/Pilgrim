@@ -1,3 +1,4 @@
+using Unity.Entities;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -16,8 +17,12 @@ public class UIManager : MonoBehaviour
     public GameObject SelectStagePrefab;
     public GameObject SettingPrefab;
     public GameObject GamePrefab;
+    public GameObject GuidePrefab;
 
     private GameObject current = null;
+    private GameObject guide = null;
+    private UIType currentType = UIType.INTRO;
+    public UIType CurrentType => currentType;
     private void Awake()
     {
         _instance = this;
@@ -25,11 +30,12 @@ public class UIManager : MonoBehaviour
     }
     public void Get(UIType type)
     {
-        if (current != null)
+        if (current != null && currentType != type)
         {
             Destroy(current);
             current = null;
         }
+        currentType = type;
         GameObject prefab = null;
         switch (type)
         {
@@ -51,5 +57,18 @@ public class UIManager : MonoBehaviour
             current = Instantiate(prefab, Stack.transform);
         }
 
+    }
+    public void SetGuide()
+    {
+        RemoveGuide();
+        guide = Instantiate(GuidePrefab, Stack.transform);
+    }
+    public void RemoveGuide()
+    {
+        if(guide != null)
+        {
+            Destroy(guide);
+            guide = null;
+        }
     }
 }

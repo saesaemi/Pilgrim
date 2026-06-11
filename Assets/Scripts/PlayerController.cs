@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckRadius = 0.1f;
-    public Animator animator;
+    [SerializeField] private Animator animator;
 
     // 상태이상
     private float speedMultiplier = 1f;     // 슬로우 등 속도 배율
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool IsDead => isDead;
     private bool isStageEnd = false;
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+        if (GameManager.Instance.IsPause) return;
+         
         if (isDead || isStageEnd) return;
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -104,11 +108,10 @@ public class PlayerController : MonoBehaviour
         isStageEnd = false;
         animator.SetTrigger("Idle");
     }
-    public void Victory(Vector3 position)
+    public void Victory()
     {
-        transform.position = position;
         isStageEnd = true;
-        animator.SetTrigger("Victory");
+        gameObject.SetActive(false);
     }
     private void OnDrawGizmosSelected()
     {

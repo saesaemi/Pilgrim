@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
   m_Name: StageData_Day01
   m_EditorClassIdentifier: Assembly-CSharp::StageData
-  dayNumber: 1
-  stageTitle: "\uBA78\uB9DD\uC758 \uB3C4\uC2DC"
-  isBuffStage: 0
-  stagePrefab: {fileID: 6552601046169712921, guid: b251593337650a94d83cfd3197dc3db1, type: 3}
+  DayNumber: 1
+  StageTitle: "\uBA78\uB9DD\uC758 \uB3C4\uC2DC"
+  IsBuffStage: 0
+  IsGuide: 1
+  StageDesc: "\uC774 \uB3C4\uC2DC\uC5D0\uC11C \uBC97\uC5B4\uB098\uC57C \uD574! \uBA78\uB9DD\uC774
+    \uC628\uB2E4!"
+  StagePrefab: {fileID: 6552601046169712921, guid: b251593337650a94d83cfd3197dc3db1, type: 3}
