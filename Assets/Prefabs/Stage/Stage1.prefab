@@ -254,6 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3669254541323770209}
+  - component: {fileID: 2937838341613283202}
   m_Layer: 5
   m_Name: Stage1
   m_TagString: Untagged
@@ -284,6 +285,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2937838341613283202
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552601046169712921}
+  m_CullTransparentMesh: 1
 --- !u!1001 &5143486423848543687
 PrefabInstance:
   m_ObjectHideFlags: 0

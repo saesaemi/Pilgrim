@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => _instance;
 
     public bool IsPause = false;
+    public int SaveStageData => PlayerPrefs.GetInt("GameManager_Stage", 0);
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -28,8 +29,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this);
         currentCheckpoint = DefaultRespawnPoint != null ? DefaultRespawnPoint.position : Vector3.zero;
-        Player.gameObject.SetActive(false);
-        UIManager.Instance?.Get(UIManager.UIType.INTRO);
+        GotoIntro();
     }
     public void UpdateCheckpoint(Vector3 position)
     {
@@ -75,5 +75,15 @@ public class GameManager : MonoBehaviour
     {
         // 리스폰 포인트 초기화 후 스테이지 재로드
         StageLoader.Instance?.ReloadCurrentStage();
+    }
+    public void GotoIntro()
+    {
+        Player.gameObject.SetActive(false);
+        UIManager.Instance?.Get(UIManager.UIType.INTRO);
+    }
+    public void GotoSelectStage()
+    {
+        Player.gameObject.SetActive(false);
+        UIManager.Instance?.Get(UIManager.UIType.SELECTSTAGE);
     }
 }

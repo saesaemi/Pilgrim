@@ -43,6 +43,7 @@ public class StageLoader : MonoBehaviour
             Debug.Log("모든 스테이지 클리어!");
             return;
         }
+        PlayerPrefs.SetInt("GameManager_Stage", next);
         LoadStage(next);
     }
 
@@ -81,6 +82,7 @@ public class StageLoader : MonoBehaviour
         else
             UIManager.Instance.RemoveGuide();
 
+        UIManager.Instance.SetStageText(data.StageTitle, data.StageDesc);
         yield return FadeIn();
 
         Debug.Log($"DAY {data.DayNumber} 로드 완료: {data.StageTitle}");
@@ -107,5 +109,11 @@ public class StageLoader : MonoBehaviour
             yield return FadeController.Instance.FadeIn(transitionDuration);
         else
             yield return new WaitForSeconds(transitionDuration);
+    }
+    public void ResetStage()
+    {
+        if(currentStageInstance != null)
+            Destroy(currentStageInstance);
+        UIManager.Instance.RemoveGuide();
     }
 }

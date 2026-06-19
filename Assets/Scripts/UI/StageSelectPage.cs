@@ -24,4 +24,9 @@ public class StageSelectPage : MonoBehaviour
         UIManager.Instance.Get(UIManager.UIType.GAME);
         StageLoader.Instance.LoadStage(index);
     }
+
+    public void OnClickIntro()
+    {
+        UIManager.Instance.Get(UIManager.UIType.INTRO);
+    }
 }

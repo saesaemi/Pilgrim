@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     private GameObject guide = null;
     private UIType currentType = UIType.INTRO;
     public UIType CurrentType => currentType;
+    public GamePage GamePage;
     private void Awake()
     {
         _instance = this;
@@ -55,6 +56,7 @@ public class UIManager : MonoBehaviour
         if(prefab != null)
         {
             current = Instantiate(prefab, Stack.transform);
+            GamePage = current.GetComponent<GamePage>();
         }
 
     }
@@ -70,5 +72,10 @@ public class UIManager : MonoBehaviour
             Destroy(guide);
             guide = null;
         }
+    }
+    public void SetStageText(string title, string desc)
+    {
+        if(GamePage != null)
+            GamePage.SetText(title, desc);
     }
 }
