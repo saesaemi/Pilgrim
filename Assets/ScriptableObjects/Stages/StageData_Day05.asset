@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
+  m_Name: StageData_Day05
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  DayNumber: 5
+  StageTitle: "\uD574\uC11D\uC790\uC758 \uC9D1"
+  IsBuffStage: 0
+  IsGuide: 0
+  StageDesc: "\uB108\uC758 \uC5EC\uC815\uC5D0\uC11C \uC774 \uC758\uBBF8\uB4E4\uC744
+    \uB9CC\uB0A0 \uAC83\uC774\uB2C8\uB77C."
+  StagePrefab: {fileID: 5837898045769421035, guid: 8de66543e296dfa4791e16fee4c028fa, type: 3}

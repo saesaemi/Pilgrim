@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => _instance;
 
     public bool IsPause = false;
+    public bool IsTestScene = false;
     public int SaveStageData => PlayerPrefs.GetInt("GameManager_Stage", 0);
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this);
         currentCheckpoint = DefaultRespawnPoint != null ? DefaultRespawnPoint.position : Vector3.zero;
-        GotoIntro();
+        if(IsTestScene == false) GotoIntro();
     }
     public void UpdateCheckpoint(Vector3 position)
     {

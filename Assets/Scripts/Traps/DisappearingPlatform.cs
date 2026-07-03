@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 // 플레이어가 올라서면 잠시 후 사라졌다가 복원
 public class DisappearingPlatform : TrapBase
@@ -7,13 +8,13 @@ public class DisappearingPlatform : TrapBase
     [SerializeField] private float respawnDelay = 2f;
 
     private Collider2D col;
-    private SpriteRenderer sr;
+    private Image image;
     private bool isTriggered;
 
     private void Awake()
     {
         col = GetComponent<Collider2D>();
-        sr  = GetComponent<SpriteRenderer>();
+        image = GetComponent<Image>();
     }
 
     protected override void OnPlayerCollisionEnter(PlayerController player)
@@ -27,20 +28,20 @@ public class DisappearingPlatform : TrapBase
     {
         for (int i = 0; i < 3; i++)
         {
-            sr.color = new Color(1, 1, 1, 0.3f);
+            image.color = new Color(1, 1, 1, 0.3f);
             yield return new WaitForSeconds(0.1f);
-            sr.color = Color.white;
+            image.color = Color.white;
             yield return new WaitForSeconds(0.1f);
         }
 
         col.enabled = false;
-        sr.enabled  = false;
+        image.enabled  = false;
 
         yield return new WaitForSeconds(respawnDelay);
 
         col.enabled = true;
-        sr.enabled  = true;
-        sr.color    = Color.white;
+        image.enabled = true;
+        image.color = Color.black;
         isTriggered = false;
     }
 }

@@ -9,7 +9,7 @@ public class StageSelectPage : MonoBehaviour
     private void Awake()
     {
         Prefab.SetActive(false);
-        var stageCount = StageLoader.Instance.StageCount;
+        var stageCount = StageLoader.Instance.StageCount - 1;
         for (int i = 0; i < stageCount; i++) 
         { 
             var go = Instantiate(Prefab, Prefab.transform.parent);
