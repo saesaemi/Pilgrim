@@ -5,3 +5,6 @@ While thinking about the content of *The Pilgrim's Progress*, I thought it would
 Each stage features traps based on its own story, and the game progresses by likening this to the journey of life.
 
 Currently, it is only briefly connected.
+
+Downloadlink
+https://drive.google.com/file/d/18MHrmodqtDdTYgZXXjGypoxKMsHHRyLW/view?usp=drive_link
