@@ -463,4 +463,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+/[Aa]ssets/[Oo]utput/*
+
 # End of https://www.toptal.com/developers/gitignore/api/unity,csharp
