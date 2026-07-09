@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 50.000034, y: 50.000034, z: 0}
-  m_LocalScale: {x: 2.2881355, y: 2.2881355, z: 2.2881355}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileLauncher
   projectilePrefab: {fileID: 4791326544780536873, guid: f3661138f1857a94eba6074b37291b93, type: 3}
-  interval: 2
+  interval: 3
   direction: {x: 1, y: 0}
-  firstDelay: 0.1
+  firstDelay: 0.5

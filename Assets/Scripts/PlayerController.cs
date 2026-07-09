@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * speedMultiplier);
         }
+
     }
 
     // ── 상태이상 API ──────────────────────────────

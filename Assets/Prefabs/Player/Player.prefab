@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5447864585276571309}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8000366734171587943}
   - component: {fileID: 7212417385948252240}
   - component: {fileID: 1334575748640751576}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 1509861146027516546}
   - component: {fileID: 3819934215680999600}
   - component: {fileID: 1374529501081569758}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 200
-  jumpForce: 200
+  jumpForce: 250
   groundCheck: {fileID: 5447864585276571309}
   groundLayer:
     serializedVersion: 2

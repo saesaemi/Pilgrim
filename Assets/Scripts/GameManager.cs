@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerController Player;
     public Transform DefaultRespawnPoint;
-    public float RespawnDelay = 1.5f;
+    public float RespawnDelay = 0.5f;
     public float VictoryDelay = 0.5f;
 
     private Vector3 currentCheckpoint;

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
-  m_Name: StageData_Day06
+  m_Name: StageData_Day08
   m_EditorClassIdentifier: Assembly-CSharp::StageData
-  DayNumber: 6
-  StageTitle: "\uC2ED\uC790\uAC00"
+  DayNumber: 8
+  StageTitle: "\uD615\uC2DD\uC8FC\uC758\uC640 \uC704\uC120"
   IsBuffStage: 0
   IsGuide: 0
-  StageDesc: "OO\uC774 \uC0AC\uB77C\uC84C\uB2E4! \uC774\uC81C \uC790\uC720\uB2E4!"
-  StagePrefab: {fileID: 5837898045769421035, guid: 6c89e613769cdc74d8a230fe5bb53fea, type: 3}
+  StageDesc: "\uC881\uC740 \uBB38\uC73C\uB85C \uB4E4\uC5B4\uC624\uC9C0 \uC54A\uC740\uC790\uB294
+    \uACB0\uAD6D \uAE38\uC744 \uC783\uC73C\uB9AC"
+  StagePrefab: {fileID: 5837898045769421035, guid: da33769b340b5244684d6411b1ec37a0, type: 3}

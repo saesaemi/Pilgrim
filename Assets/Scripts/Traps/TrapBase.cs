@@ -14,6 +14,8 @@ public class TrapBase : MonoBehaviour
         if (!isActive) return;
         if (other.TryGetComponent<PlayerController>(out var player))
             OnPlayerTriggerEnter(player);
+        else
+            OnOtherTriggerEnter();
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -21,6 +23,8 @@ public class TrapBase : MonoBehaviour
         if (!isActive) return;
         if (other.TryGetComponent<PlayerController>(out var player))
             OnPlayerTriggerExit(player);
+        else 
+            OnOtherTriggerExit();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -28,6 +32,8 @@ public class TrapBase : MonoBehaviour
         if (!isActive) return;
         if (other.gameObject.TryGetComponent<PlayerController>(out var player))
             OnPlayerCollisionEnter(player);
+        else
+            OnOtherCollisionEnter();
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -35,6 +41,8 @@ public class TrapBase : MonoBehaviour
         if (!isActive) return;
         if (other.gameObject.TryGetComponent<PlayerController>(out var player))
             OnPlayerCollisionExit(player);
+        else
+            OnOtherCollisionExit();
     }
 
     // ── 오버라이드용 가상 메서드 ─────────────────
@@ -50,6 +58,18 @@ public class TrapBase : MonoBehaviour
 
     // 콜리전 퇴장 — 기본: 아무것도 안 함
     protected virtual void OnPlayerCollisionExit(PlayerController player) { }
+
+    // 다른 물체 트리거 진입 - 기본 : 아무것도 안함
+    protected virtual void OnOtherTriggerEnter() { }
+
+    // 다른 물체 트리거 퇴장 — 기본: 아무것도 안 함
+    protected virtual void OnOtherTriggerExit() { }
+
+    // 다른 물체 콜리전 진입 — 기본: 아무것도 안 함
+    protected virtual void OnOtherCollisionEnter() { }
+
+    // 다른 물체 콜리전 퇴장 — 기본: 아무것도 안 함
+    protected virtual void OnOtherCollisionExit() { }
 
     // ── 활성화 제어 ──────────────────────────────
 
