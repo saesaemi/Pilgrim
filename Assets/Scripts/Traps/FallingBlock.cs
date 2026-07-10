@@ -50,7 +50,7 @@ public class FallingBlock : TrapBase
         rb.angularVelocity = 0f;
         transform.localPosition = initPos;
         transform.localRotation = Quaternion.identity;
-        Invoke("Init", 1.5f);
+        Invoke("Init", 2f);
         //Init();
     }
     protected override void OnOtherCollisionEnter()

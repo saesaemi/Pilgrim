@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FallingBlock
   isActive: 1
-  triggerRange: 200
+  triggerRange: 1000
   fallDelay: 0.1
   playerLayer:
     serializedVersion: 2

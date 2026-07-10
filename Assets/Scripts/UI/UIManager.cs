@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour
         {
             current = Instantiate(prefab, Stack.transform);
             GamePage = current.GetComponent<GamePage>();
+            SetDeathCount();
         }
 
     }
@@ -77,5 +78,10 @@ public class UIManager : MonoBehaviour
     {
         if(GamePage != null)
             GamePage.SetText(title, desc);
+    }
+    public void SetDeathCount()
+    {
+        if (GamePage != null)
+            GamePage.SetDeathCount(GameManager.Instance.DeathCount);
     }
 }

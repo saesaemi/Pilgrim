@@ -8,6 +8,7 @@ public class MovingPlatform : TrapBase
     [SerializeField] private float speed = 2f;
 
     private Transform target;
+    private Transform playerParent;
 
     private void Start()
     {
@@ -24,8 +25,11 @@ public class MovingPlatform : TrapBase
 
     // 플레이어가 올라서면 자식으로 붙여서 함께 이동
     protected override void OnPlayerCollisionEnter(PlayerController player)
-        => player.transform.SetParent(transform);
+    {
+        playerParent = player.transform.parent;
+        player.transform.SetParent(transform);
+    }
 
     protected override void OnPlayerCollisionExit(PlayerController player)
-        => player.transform.SetParent(null);
+        => player.transform.SetParent(playerParent);
 }

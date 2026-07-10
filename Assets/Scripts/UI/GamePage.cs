@@ -6,6 +6,7 @@ public class GamePage : MonoBehaviour
 {
     public TextMeshProUGUI Title;
     public TextMeshProUGUI Desc;
+    public TextMeshProUGUI DeathCount;
     public void GotoStageSelect()
     {
         StageLoader.Instance.ResetStage();
@@ -29,5 +30,10 @@ public class GamePage : MonoBehaviour
         if(Desc != null)
             Desc.gameObject.SetActive(false);
 
+    }
+    public void SetDeathCount(int deathCount)
+    {
+
+        DeathCount.text = $"Death : {deathCount}";
     }
 }

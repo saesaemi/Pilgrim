@@ -13,13 +13,15 @@ public class GameManager : MonoBehaviour
     private Vector3 currentCheckpoint;
     private int deathCount;
 
-    public int DeathCount => deathCount;
+    public int DeathCount => PlayerDeathCount;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
     public bool IsPause = false;
     public bool IsTestScene = false;
     public int SaveStageData => PlayerPrefs.GetInt("GameManager_Stage", 0);
+
+    public int PlayerDeathCount => PlayerPrefs.GetInt("GameManager_PlayerDeathCount", 0);
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         }
         _instance = this;
         DontDestroyOnLoad(this);
+        deathCount = PlayerDeathCount;
         currentCheckpoint = DefaultRespawnPoint != null ? DefaultRespawnPoint.position : Vector3.zero;
         if(IsTestScene == false) GotoIntro();
     }
@@ -44,7 +47,9 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDied()
     {
         deathCount++;
+        PlayerPrefs.SetInt("GameManager_PlayerDeathCount", deathCount);
         Debug.Log($"사망 #{deathCount}");
+        UIManager.Instance.SetDeathCount();
         StartCoroutine(RespawnRoutine());
     }
 
