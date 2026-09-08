@@ -6,8 +6,14 @@ public class SlowZone : TrapBase
     [SerializeField] private float slowMultiplier = 0.4f;
 
     protected override void OnPlayerTriggerEnter(PlayerController player)
-        => player.ApplySlow(slowMultiplier, 99f);
+    {
+        player.ApplySlow(slowMultiplier, 99f);
+        player.SetJumpDisabled(true);
+    }
 
     protected override void OnPlayerTriggerExit(PlayerController player)
-        => player.ApplySlow(1f, 0f);
+    {
+        player.ApplySlow(1f, 0f);
+        player.SetJumpDisabled(false);
+    }
 }

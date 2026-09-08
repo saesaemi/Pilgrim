@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private float speedMultiplier = 1f;     // 슬로우 등 속도 배율
     private bool isControlsReversed = false; // 조작 반전 (마법의 땅)
     private bool isSlippery = false;         // 미끄러운 바닥
+    private bool isJumpDisabled = false;     // 점프 금지 (슬로우존 등)
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Run_End", true);
 
         bool jumpInput = isControlsReversed ? Input.GetButtonDown("Fire1") : Input.GetButtonDown("Jump");
-        if (jumpInput && isGrounded)
+        if (jumpInput && isGrounded && !isJumpDisabled)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * speedMultiplier);
         }
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetControlsReversed(bool reversed) => isControlsReversed = reversed;
     public void SetSlippery(bool slippery) => isSlippery = slippery;
+    public void SetJumpDisabled(bool disabled) => isJumpDisabled = disabled;
 
     // ── 죽음 / 리스폰 ─────────────────────────────
 
@@ -93,6 +95,7 @@ public class PlayerController : MonoBehaviour
         speedMultiplier = 1f;
         isControlsReversed = false;
         isSlippery = false;
+        isJumpDisabled = false;
         rb.linearVelocity = Vector2.zero;
         GameManager.Instance.OnPlayerDied();
         animator.SetTrigger("Die");
@@ -105,6 +108,7 @@ public class PlayerController : MonoBehaviour
         speedMultiplier = 1f;
         isControlsReversed = false;
         isSlippery = false;
+        isJumpDisabled = false;
         isDead = false;
         isStageEnd = false;
         animator.SetTrigger("Idle");

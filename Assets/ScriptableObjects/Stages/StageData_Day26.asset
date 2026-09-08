@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
+  m_Name: StageData_Day26
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  DayNumber: 26
+  StageTitle: "아첨꾼의 그물"
+  IsBuffStage: 0
+  IsGuide: 0
+  StageDesc: "달콤한 말에 속지 말라!"
+  StagePrefab: {fileID: 6552601046169712921, guid: 6d3aa3dd585208445bb253cd5f07fde7, type: 3}

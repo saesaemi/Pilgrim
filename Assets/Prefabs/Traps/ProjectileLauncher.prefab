@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileLauncher
   projectilePrefab: {fileID: 4791326544780536873, guid: f3661138f1857a94eba6074b37291b93, type: 3}
-  interval: 3
+  interval: 4.5
   direction: {x: 1, y: 0}
+  launchSpeed: 100
   firstDelay: 0.5

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
+  m_Name: StageData_Day37
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  DayNumber: 37
+  StageTitle: "크리스티아나의 출발"
+  IsBuffStage: 0
+  IsGuide: 0
+  StageDesc: "남편이 간 길을 우리도 가야 해."
+  StagePrefab: {fileID: 6552601046169712921, guid: a1f0b5a9a3e6fbd40aa298f5bf25c35e, type: 3}

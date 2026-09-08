@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
+  m_Name: StageData_Day32
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  DayNumber: 32
+  StageTitle: "죽음의 강 앞에서"
+  IsBuffStage: 0
+  IsGuide: 0
+  StageDesc: "강을 건너야 한다. 믿음으로 첫 발을 내딛자."
+  StagePrefab: {fileID: 6552601046169712921, guid: f497baadc514b5a47bbc2376a7675995, type: 3}

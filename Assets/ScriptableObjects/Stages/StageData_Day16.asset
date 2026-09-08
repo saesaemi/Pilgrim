@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
+  m_Name: StageData_Day16
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  DayNumber: 16
+  StageTitle: "전도자의 재등장과 경고"
+  IsBuffStage: 0
+  IsGuide: 0
+  StageDesc: "허영의 시장에서 어떤 것도 사지 말라!"
+  StagePrefab: {fileID: 6552601046169712921, guid: be80ec4cb821c5049978ff5937d06aaf, type: 3}

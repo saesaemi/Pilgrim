@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3731408187084381077}
   - component: {fileID: 5437547437140131842}
   - component: {fileID: 3925014894870716718}
-  - component: {fileID: 6350532518263557372}
+  - component: {fileID: 2408035653030768850}
+  - component: {fileID: 5136227238231874447}
   m_Layer: 6
-  m_Name: Trap_Spike_Fixed
+  m_Name: Trap_CrowdObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 50, y: -17}
-  m_SizeDelta: {x: 130, y: 49}
+  m_SizeDelta: {x: 160, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3731408187084381077
 CanvasRenderer:
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc0888ef2e64c0b4b8594c6d06458b6e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08599875211a21544a269777af1f5382, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -111,7 +112,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 4, y: 0}
+  m_Offset: {x: 8, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -121,9 +122,36 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 122, y: 41}
+  m_Size: {x: 150, y: 100}
   m_EdgeRadius: 0
---- !u!114 &6350532518263557372
+--- !u!50 &2408035653030768850
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847123254343999084}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &5136227238231874447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +160,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8847123254343999084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37089050aea8334aa96f6faf5999e9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1efdb2e65e089d34888b34e82afc9e3d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpikeTrap
+  m_EditorClassIdentifier: Assembly-CSharp::CrowdObstacle
   isActive: 1
+  speed: 80
+  range: 150
+  pushForce: 150

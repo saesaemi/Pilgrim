@@ -6,6 +6,7 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float interval = 2f;
     [SerializeField] private Vector2 direction = Vector2.left;
+    [SerializeField] private float launchSpeed = 100f;
     [SerializeField] private float firstDelay = 0f;
 
     private void Start()
@@ -18,12 +19,8 @@ public class ProjectileLauncher : MonoBehaviour
         if (projectilePrefab == null) return;
         if (GameManager.Instance.IsPause) return;
             var go = Instantiate(projectilePrefab, transform/*, Quaternion.identity*/);
-        if (go.TryGetComponent<Projectile>(out _))
-        {
-            // direction은 Projectile의 Inspector에서 설정하거나 여기서 주입
-            var rb = go.GetComponent<Rigidbody2D>();
-            if (rb != null) rb.linearVelocity = direction.normalized * 6f;
-        }
+        if (go.TryGetComponent<Projectile>(out var projectile))
+            projectile.Launch(direction, launchSpeed);
     }
 
     private void OnDrawGizmosSelected()

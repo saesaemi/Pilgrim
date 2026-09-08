@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
+  m_Name: StageData_Day22
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  DayNumber: 22
+  StageTitle: "허황된 지름길의 유혹"
+  IsBuffStage: 0
+  IsGuide: 0
+  StageDesc: "지름길이 오히려 더 먼 길이 될 줄 몰랐다."
+  StagePrefab: {fileID: 6552601046169712921, guid: bc639b66ccb2d1045a8a5ee30d926e57, type: 3}

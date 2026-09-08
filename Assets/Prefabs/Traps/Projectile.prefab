@@ -110,7 +110,7 @@ MonoBehaviour:
   isActive: 1
   speed: 100
   direction: {x: 1, y: 0}
-  lifeTime: 6
+  lifeTime: 10
 --- !u!50 &2081507408417333637
 Rigidbody2D:
   serializedVersion: 5

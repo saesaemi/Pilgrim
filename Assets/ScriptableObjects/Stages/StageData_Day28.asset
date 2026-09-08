@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c695a9397d832bf4d9a988b09bb51ea4, type: 3}
+  m_Name: StageData_Day28
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  DayNumber: 28
+  StageTitle: "마법의 땅 졸음"
+  IsBuffStage: 0
+  IsGuide: 0
+  StageDesc: "절대 잠들면 안 돼! 서로 이야기를 나누자!"
+  StagePrefab: {fileID: 6552601046169712921, guid: 72cec099f6243574392d1254467becce, type: 3}
