@@ -6,5 +6,5 @@ Each stage features traps based on its own story, and the game progresses by lik
 
 Currently, it is only briefly connected.
 
-Downloadlink
-https://drive.google.com/file/d/18MHrmodqtDdTYgZXXjGypoxKMsHHRyLW/view?usp=drive_link
+[Link]
+https://saesaemi.github.io/Pilgrim/OutputWeb/index.html
