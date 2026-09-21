@@ -9,12 +9,12 @@ public class TimedGate : TrapBase
     [SerializeField] private float firstOpenDelay = 0f;
 
     private Collider2D col;
-    private SpriteRenderer sr;
+    private UnityEngine.UI.Image image;
 
     private void Awake()
     {
         col = GetComponent<Collider2D>();
-        sr  = GetComponent<SpriteRenderer>();
+        image = GetComponent<UnityEngine.UI.Image>();
     }
 
     private void Start()
@@ -37,7 +37,7 @@ public class TimedGate : TrapBase
     private void SetOpen(bool open)
     {
         col.enabled = !open;
-        if (sr != null) sr.color = open ? new Color(1, 1, 1, 0.3f) : Color.white;
+        if (image != null) image.color = open ? new Color(1, 1, 1, 0.3f) : Color.white;
     }
 
     // 닫혀 있을 때 충돌하면 즉사

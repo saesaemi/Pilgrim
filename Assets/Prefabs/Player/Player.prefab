@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 200
-  jumpForce: 400
+  jumpForce: 460
   groundCheck: {fileID: 5447864585276571309}
   groundLayer:
     serializedVersion: 2

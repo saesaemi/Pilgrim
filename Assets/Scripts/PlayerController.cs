@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded;
+    private ContactFilter2D groundFilter;
+    private readonly Collider2D[] groundHits = new Collider2D[1];
+
+    private UnityEngine.UI.Image[] bodyImages;
+    private static readonly Color reversedTint = new Color(0.7f, 0.5f, 1f, 1f);
     private bool isDead;
 
     public bool IsDead => isDead;
@@ -32,6 +37,15 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        bodyImages = GetComponentsInChildren<UnityEngine.UI.Image>(true);
+    }
+
+    private void UpdateStatusVisual()
+    {
+        if (bodyImages == null) return;
+        Color c = isControlsReversed ? reversedTint : Color.white;
+        foreach (var img in bodyImages)
+            if (img != null) img.color = c;
     }
 
     private void Update()
@@ -41,7 +55,9 @@ public class PlayerController : MonoBehaviour
          
         if (isDead || isStageEnd) return;
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        groundFilter.SetLayerMask(groundLayer);
+        groundFilter.useTriggers = false;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundFilter, groundHits) > 0;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         if (isControlsReversed) horizontal *= -1f;
@@ -60,10 +76,10 @@ public class PlayerController : MonoBehaviour
         else
             animator.SetBool("Run_End", true);
 
-        bool jumpInput = isControlsReversed ? Input.GetButtonDown("Fire1") : Input.GetButtonDown("Jump");
+        bool jumpInput = Input.GetButtonDown("Jump");
         if (jumpInput && isGrounded && !isJumpDisabled)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * speedMultiplier);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
     }
@@ -82,7 +98,11 @@ public class PlayerController : MonoBehaviour
         speedMultiplier = 1f;
     }
 
-    public void SetControlsReversed(bool reversed) => isControlsReversed = reversed;
+    public void SetControlsReversed(bool reversed)
+    {
+        isControlsReversed = reversed;
+        UpdateStatusVisual();
+    }
     public void SetSlippery(bool slippery) => isSlippery = slippery;
     public void SetJumpDisabled(bool disabled) => isJumpDisabled = disabled;
 
@@ -96,6 +116,7 @@ public class PlayerController : MonoBehaviour
         isControlsReversed = false;
         isSlippery = false;
         isJumpDisabled = false;
+        UpdateStatusVisual();
         rb.linearVelocity = Vector2.zero;
         GameManager.Instance.OnPlayerDied();
         animator.SetTrigger("Die");
@@ -111,6 +132,7 @@ public class PlayerController : MonoBehaviour
         isJumpDisabled = false;
         isDead = false;
         isStageEnd = false;
+        UpdateStatusVisual();
         animator.SetTrigger("Idle");
     }
     public void Victory()

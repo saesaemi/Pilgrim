@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 50, y: -17}
-  m_SizeDelta: {x: 160, y: 110}
+  m_SizeDelta: {x: 90, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3731408187084381077
 CanvasRenderer:
@@ -112,7 +112,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 8, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -122,7 +122,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 150, y: 100}
+  m_Size: {x: 84, y: 54}
   m_EdgeRadius: 0
 --- !u!50 &2408035653030768850
 Rigidbody2D:
@@ -166,4 +166,5 @@ MonoBehaviour:
   isActive: 1
   speed: 80
   range: 150
-  pushForce: 150
+  pushForce: 25
+  bumpInterval: 0.25
