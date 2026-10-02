@@ -1,10 +1,12 @@
-This is my Project Pilgrim.
+Pilgrim 프로젝트 입니다.
 
-While thinking about the content of *The Pilgrim's Progress*, I thought it would be interesting to turn it into a game, so I decided to create one.
+'천로역정'이라는 내용을 읽으며 구상해봤던 내용을 게임으로 만들면 재밌겠다는 생각을 했고 그래서 시작했습니다.
 
-Each stage features traps based on its own story, and the game progresses by likening this to the journey of life.
+스테이지가 이야기로 분할되어 있고 여정이라는 컨셉에 맞춰 작업을 해봤습니다.
 
-Currently, it is only briefly connected.
+대부분의 작업은 AI를 연결하여 agent 활용을 하기 위해 시도한 프로젝트 입니다.
+
+10스테이지까지는 시범 케이스를 위해 직접 만들었지만 이후 스테이지는 일부 검증에서 처리되지 않는 부분을 제외하고는 AI를 이용하여 작업을 했습니다.
 
 [Link]
 https://saesaemi.github.io/Pilgrim/OutputWeb/index.html
